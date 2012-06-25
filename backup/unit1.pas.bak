@@ -18,10 +18,12 @@ type
     TabControl1: TTabControl;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
+    TabSheet3: TTabSheet;
     Timer1: TTimer;
     Timer2: TTimer;
     ToolBar1: TToolBar;
     ToolBar2: TToolBar;
+    ToolBar3: TToolBar;
     ToolButton1: TToolButton;
     ToolButton10: TToolButton;
     ToolButton11: TToolButton;
@@ -40,6 +42,8 @@ type
     ToolButton23: TToolButton;
     ToolButton24: TToolButton;
     ToolButton25: TToolButton;
+    ToolButton26: TToolButton;
+    ToolButton27: TToolButton;
     ToolButton3: TToolButton;
     ToolButton4: TToolButton;
     ToolButton5: TToolButton;
@@ -47,6 +51,7 @@ type
     ToolButton7: TToolButton;
     ToolButton8: TToolButton;
     ToolButton9: TToolButton;
+    procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure TabControl1Change(Sender: TObject);
     procedure TabControl1MouseDown(Sender: TObject; Button: TMouseButton;
@@ -59,6 +64,7 @@ type
     procedure ToolButton23Click(Sender: TObject);
     procedure ToolButton24Click(Sender: TObject);
     procedure ToolButton25Click(Sender: TObject);
+    procedure ToolButton26Click(Sender: TObject);
     procedure ToolButton2Click(Sender: TObject);
     procedure ToolButton9Click(Sender: TObject);
   private
@@ -89,6 +95,11 @@ begin
   form1.Height:= 80;
   form1.Top:= 0;
   form1.Left:=0;
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  form1.ToolButton26.Color := clblack;
 end;
 
 procedure TForm1.TabControl1Change(Sender: TObject);
@@ -178,7 +189,7 @@ begin
     Show;
     setmode := ToolButton1.Tag;
     case setmode of
-      0:editfrm[Findex -1].SynEdit1.Highlighter := SynMultiSyn1;
+      0:;//editfrm[Findex -1].SynEdit1.Highlighter := SynMultiSyn1;
       1:editfrm[Findex -1].SynEdit1.Highlighter := SynUNIXShellScriptSyn1;
       2:editfrm[Findex -1].SynEdit1.Highlighter := SynAnySyn1;
       3:editfrm[Findex -1].SynEdit1.Highlighter := SynTeXSyn1;
@@ -198,6 +209,32 @@ begin
       17:editfrm[Findex -1].SynEdit1.Highlighter := SynPasSyn1;
       18:editfrm[Findex -1].SynEdit1.Highlighter := SynFreePascalSyn1;
       19:editfrm[Findex -1].SynEdit1.Highlighter := SynLFMSyn1;
+      20:begin
+        //if editfrm[Findex -1].OpenDialog1.Filter = '' then
+          setmode := 0;
+        case setmode of
+          0:;//editfrm[Findex -1].SynEdit1.Highlighter := SynMultiSyn1;
+          1:editfrm[Findex -1].SynEdit1.Highlighter := SynUNIXShellScriptSyn1;
+          2:editfrm[Findex -1].SynEdit1.Highlighter := SynAnySyn1;
+          3:editfrm[Findex -1].SynEdit1.Highlighter := SynTeXSyn1;
+          4:editfrm[Findex -1].SynEdit1.Highlighter := SynIniSyn1;
+          5:editfrm[Findex -1].SynEdit1.Highlighter := SynBatSyn1;
+          6:editfrm[Findex -1].SynEdit1.Highlighter := SynXMLSyn1;
+          7:editfrm[Findex -1].SynEdit1.Highlighter := SynHTMLSyn1;
+          8:editfrm[Findex -1].SynEdit1.Highlighter := SynCssSyn1;
+          9:editfrm[Findex -1].SynEdit1.Highlighter := SynVBSyn1;
+          10:editfrm[Findex -1].SynEdit1.Highlighter := SynSQLSyn1;
+          11:editfrm[Findex -1].SynEdit1.Highlighter := SynPHPSyn1;
+          12:editfrm[Findex -1].SynEdit1.Highlighter := SynPerlSyn1;
+          13:editfrm[Findex -1].SynEdit1.Highlighter := SynPythonSyn1;
+          14:editfrm[Findex -1].SynEdit1.Highlighter := SynCppSyn1;
+          15:editfrm[Findex -1].SynEdit1.Highlighter := SynDiffSyn1;
+          16:editfrm[Findex -1].SynEdit1.Highlighter := SynJavaSyn1;
+          17:editfrm[Findex -1].SynEdit1.Highlighter := SynPasSyn1;
+          18:editfrm[Findex -1].SynEdit1.Highlighter := SynFreePascalSyn1;
+          19:editfrm[Findex -1].SynEdit1.Highlighter := SynLFMSyn1;
+        end;
+      end;
     end;
   end;
 end;
@@ -252,6 +289,11 @@ begin
   if Form1.TabControl1.TabIndex = -1 then
     exit;
   editfrm[form1.TabControl1.TabIndex].SynEdit1.PasteFromClipboard;
+end;
+
+procedure TForm1.ToolButton26Click(Sender: TObject);
+begin
+  editfrm[form1.TabControl1.TabIndex].SynEdit1.Color:= form1.ToolButton26.Color;
 end;
 
 procedure TForm1.ToolButton2Click(Sender: TObject);
